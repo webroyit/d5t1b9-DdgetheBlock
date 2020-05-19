@@ -4,7 +4,6 @@ public class BlockSpawner : MonoBehaviour
 {
     // [] for array
     public Transform[] spawnPoints;
-
     public GameObject blockPrefab;
 
     // Start is called before the first frame update
@@ -19,7 +18,7 @@ public class BlockSpawner : MonoBehaviour
             {
                 // Create the block
                 // Quaternion.identity to prevent rotate
-                Intantiate(blockPrefab, spawnPoints[i].position, Quaternion.identity);
+                Instantiate(blockPrefab, spawnPoints[i].position, Quaternion.identity);
             }
             
         }
