@@ -4,11 +4,25 @@ public class BlockSpawner : MonoBehaviour
 {
     // [] for array
     public Transform[] spawnPoints;
+
     public GameObject blockPrefab;
+
+    public float timeBetweenWaves = 1f;
+
+    private float timeToSpawn = 2f;
 
     void Update()
     {
-        SpawnBlocks();
+        // Unity variable
+        // The amount of seconds that has passed by when the game started
+        if(Time.time >= timeToSpawn)
+        {
+            // Call this function
+            SpawnBlocks();
+
+            // Time it takes to spawn a new block
+            timeToSpawn = Time.time + timeBetweenWaves;
+        }
     }
 
     // Create blocks
