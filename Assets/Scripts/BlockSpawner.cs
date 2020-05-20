@@ -6,8 +6,13 @@ public class BlockSpawner : MonoBehaviour
     public Transform[] spawnPoints;
     public GameObject blockPrefab;
 
-    // Start is called before the first frame update
-    void Start()
+    void Update()
+    {
+        SpawnBlocks();
+    }
+
+    // Create blocks
+    void SpawnBlocks()
     {
         // Get a random number
         int randomIndex = Random.Range(0, spawnPoints.Length);
