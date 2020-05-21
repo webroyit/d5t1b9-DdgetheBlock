@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class BlockSpawner : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class BlockSpawner : MonoBehaviour
 
     private float timeToSpawn = 2f;
 
+    public Text scoreText;
+
+    public float score = 0f;
+
     void Update()
     {
         // Unity variable
@@ -19,6 +24,10 @@ public class BlockSpawner : MonoBehaviour
         {
             // Call this function
             SpawnBlocks();
+
+            // Update the player score for each block spawn
+            score += 1;
+            scoreText.text = score.ToString();
 
             // Time it takes to spawn a new block
             timeToSpawn = Time.time + timeBetweenWaves;
