@@ -32,4 +32,11 @@ public class Player : MonoBehaviour
         // Move the player
         rb.MovePosition(newPosition);
     }
+
+    // This is a callback that get called when something hit somthing using 2D Collider
+    void OnCollisionEnter2D()
+    {
+        // Call this function on GameManager class
+        FindObjectOfType<GameManager>().EndGame();
+    }
 }

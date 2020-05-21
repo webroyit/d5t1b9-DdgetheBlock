@@ -2,5 +2,8 @@
 
 public class GameManager : MonoBehaviour
 {
-
+    public void EndGame()
+    {
+        Debug.Log("End Game");
+    }
 }
