@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public void EndGame()
     {
-        Debug.Log("End Game");
+        // Restart the game
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
