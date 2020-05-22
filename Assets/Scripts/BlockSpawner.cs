@@ -12,16 +12,18 @@ public class BlockSpawner : MonoBehaviour
 
     private float timeToSpawn = 2f;
 
-    public Text scoreText;
-
     public int score = 0;
+    public int highScore = 0;
 
-    public Text highScore;
+    // Drag and drop the UI Text to these input field on Script component in Unity
+    public Text scoreText;
+    public Text highScoreText;
 
     void Start()
     {
         // Apply it with the data from local device
-        highScore.text = PlayerPrefs.GetInt("HighScore").ToString();
+        highScoreText.text = PlayerPrefs.GetInt("HighScore").ToString();
+        highScore = PlayerPrefs.GetInt("HighScore");
     }
 
     void Update()
@@ -37,9 +39,13 @@ public class BlockSpawner : MonoBehaviour
             score += 1;
             scoreText.text = score.ToString();
 
-            // Save the high score on local device
-            PlayerPrefs.SetInt("HighScore", score);
+            if(score > highScore){
+                // Save the high score on local device
+                PlayerPrefs.SetInt("HighScore", score);
 
+                highScore = score;
+            }
+            
             // Time it takes to spawn a new block
             timeToSpawn = Time.time + timeBetweenWaves;
         }
