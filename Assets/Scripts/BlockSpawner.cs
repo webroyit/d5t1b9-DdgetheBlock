@@ -14,7 +14,15 @@ public class BlockSpawner : MonoBehaviour
 
     public Text scoreText;
 
-    public float score = 0f;
+    public int score = 0;
+
+    public Text highScore;
+
+    void Start()
+    {
+        // Apply it with the data from local device
+        highScore.text = PlayerPrefs.GetInt("HighScore").ToString();
+    }
 
     void Update()
     {
@@ -28,6 +36,9 @@ public class BlockSpawner : MonoBehaviour
             // Update the player score for each block spawn
             score += 1;
             scoreText.text = score.ToString();
+
+            // Save the high score on local device
+            PlayerPrefs.SetInt("HighScore", score);
 
             // Time it takes to spawn a new block
             timeToSpawn = Time.time + timeBetweenWaves;
